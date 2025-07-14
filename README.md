@@ -79,20 +79,27 @@ A modern, interactive web application for managing your productivity, ideas, pro
 
 ```
 personal-productivity-hub/
-├── index.html          # Main hub page
-├── tasks.html          # Task management page
-├── notes.html          # Notes management page
-├── projects.html       # Project management page
-├── scripts.html        # Script runner page
-├── personal.html       # Personal info page
-├── styles.css          # Global styles and themes
-├── script.js           # Main hub functionality
-├── tasks.js            # Task management logic
-├── notes.js            # Notes management logic
-├── projects.js         # Project management logic
-├── scripts.js          # Script runner logic
-├── personal.js         # Personal info logic
-└── README.md           # This file
+├── index.html              # Main hub page
+├── README.md               # Documentation
+├── pages/                  # Application pages
+│   ├── tasks.html         # Task management page
+│   ├── notes.html         # Notes management page
+│   ├── projects.html      # Project management page
+│   ├── scripts.html       # Script runner page
+│   └── personal.html      # Personal info page
+├── assets/                 # Static assets
+│   ├── css/
+│   │   └── styles.css     # Global styles and themes
+│   ├── js/                # JavaScript modules
+│   │   ├── script.js      # Main hub functionality
+│   │   ├── tasks.js       # Task management logic
+│   │   ├── notes.js       # Notes management logic
+│   │   ├── projects.js    # Project management logic
+│   │   ├── scripts.js     # Script runner logic
+│   │   └── personal.js    # Personal info logic
+│   └── images/            # Images and screenshots
+│       ├── Screenshot 2025-07-14 213646.png
+│       └── Screenshot 2025-07-14 235015.png
 ```
 
 ## ⌨️ Keyboard Shortcuts

@@ -28,19 +28,19 @@ class ProductivityApp {
                 const feature = card.dataset.feature;
                 switch (feature) {
                     case 'tasks':
-                        window.location.href = 'tasks.html';
+                        window.location.href = 'pages/tasks.html';
                         break;
                     case 'notes':
-                        window.location.href = 'notes.html';
+                        window.location.href = 'pages/notes.html';
                         break;
                     case 'projects':
-                        window.location.href = 'projects.html';
+                        window.location.href = 'pages/projects.html';
                         break;
                     case 'scripts':
-                        window.location.href = 'scripts.html';
+                        window.location.href = 'pages/scripts.html';
                         break;
                     case 'personal':
-                        window.location.href = 'personal.html';
+                        window.location.href = 'pages/personal.html';
                         break;
                     default:
                         console.log('Unknown feature:', feature);

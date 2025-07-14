@@ -3,7 +3,12 @@
     "allow": [
       "Bash(dir /a \"C:\\Users\\ReviOs\\Desktop\\Personal_Space\\v2\")",
       "Bash(ls:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(dir:*)",
+      "Bash(mv:*)",
+      "Bash(rmdir:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
