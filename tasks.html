@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgaben-Manager - Personal Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-nav">
+                    <a href="index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Zurück zum Hub
+                    </a>
+                </div>
+                <h1 class="app-title">Aufgaben-Manager</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="page-container">
+                <!-- Page Header -->
+                <section class="page-header">
+                    <div class="page-header-content">
+                        <div class="page-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="page-info">
+                            <h2 class="page-title">Aufgaben leicht gemacht</h2>
+                            <p class="page-description">Hinzufügen, verfolgen und abhaken deiner To-dos. Bleib auf dem Laufenden, was jeden Tag am wichtigsten ist.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Add Section -->
+                <section class="quick-add-section">
+                    <div class="quick-add-card">
+                        <h3 class="section-title">
+                            <i class="fas fa-plus-circle"></i>
+                            Neue Aufgabe hinzufügen
+                        </h3>
+                        <div class="task-input-group">
+                            <input type="text" id="new-task" placeholder="Was möchtest du erledigen?" class="task-input-large">
+                            <div class="task-input-actions">
+                                <select id="task-priority" class="task-priority-select">
+                                    <option value="low">Niedrig</option>
+                                    <option value="medium" selected>Mittel</option>
+                                    <option value="high">Hoch</option>
+                                </select>
+                                <button class="btn-add-large" id="add-task">
+                                    <i class="fas fa-plus"></i>
+                                    Hinzufügen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Task Stats -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-list"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-tasks">0</span>
+                                <span class="stat-label">Gesamt</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="pending-tasks">0</span>
+                                <span class="stat-label">Offen</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon completed">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="completed-tasks">0</span>
+                                <span class="stat-label">Erledigt</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon progress">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="completion-rate">0%</span>
+                                <span class="stat-label">Fortschritt</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Task Filters -->
+                <section class="filter-section">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">
+                            <i class="fas fa-list"></i>
+                            Alle Aufgaben
+                        </button>
+                        <button class="filter-tab" data-filter="pending">
+                            <i class="fas fa-clock"></i>
+                            Offen
+                        </button>
+                        <button class="filter-tab" data-filter="completed">
+                            <i class="fas fa-check"></i>
+                            Erledigt
+                        </button>
+                        <button class="filter-tab" data-filter="high">
+                            <i class="fas fa-exclamation"></i>
+                            Hohe Priorität
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Tasks List -->
+                <section class="tasks-section">
+                    <div class="tasks-container">
+                        <div class="tasks-header">
+                            <h3 class="section-title">
+                                <i class="fas fa-clipboard-list"></i>
+                                Deine Aufgaben
+                            </h3>
+                            <div class="tasks-actions">
+                                <button class="btn-secondary" id="clear-completed">
+                                    <i class="fas fa-trash"></i>
+                                    Erledigte löschen
+                                </button>
+                                <button class="btn-secondary" id="export-tasks">
+                                    <i class="fas fa-download"></i>
+                                    Exportieren
+                                </button>
+                            </div>
+                        </div>
+                        <div class="task-list" id="task-list">
+                            <!-- Tasks will be dynamically added here -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="tasks.js"></script>
+</body>
+</html>

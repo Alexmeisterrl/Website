@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Productivity Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">Personal Hub</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-icon" id="settings-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="hero">
+                <h2 class="hero-title">Organisiere deine Ideen, einfach</h2>
+                <p class="hero-subtitle">Verwalte Aufgaben, Notizen und Projekte mit Leichtigkeit. Halte alles an einem Ort bereit, wenn du es brauchst.</p>
+            </section>
+
+            <section class="features-grid">
+                <div class="feature-card" data-feature="tasks">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="feature-title">Aufgaben leicht gemacht</h3>
+                    <p class="feature-description">Hinzufügen, verfolgen und abhaken deiner To-dos. Bleib auf dem Laufenden, was jeden Tag am wichtigsten ist.</p>
+                </div>
+
+                <div class="feature-card" data-feature="notes">
+                    <div class="feature-icon">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <h3 class="feature-title">Schnelle Notizen</h3>
+                    <p class="feature-description">Notiere Gedanken oder Erinnerungen in Sekunden. Verliere nie wieder eine gute Idee.</p>
+                </div>
+
+                <div class="feature-card" data-feature="projects">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="feature-title">Projektübersicht</h3>
+                    <p class="feature-description">Sieh alle deine Projekte auf einen Blick. Halte den Fortschritt klar und die nächsten Schritte einfach.</p>
+                </div>
+
+                <div class="feature-card" data-feature="scripts">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-title">Python Scripts ausführen</h3>
+                    <p class="feature-description">Teste und führe deinen Code direkt hier aus. Kein Setup nötig—einfach schreiben und loslegen.</p>
+                </div>
+
+                <div class="feature-card" data-feature="personal">
+                    <div class="feature-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="feature-title">Persönliche Infos</h3>
+                    <p class="feature-description">Informationen über mich, meine Fähigkeiten und Projekte. Ein persönlicher Überblick.</p>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Task Manager Modal -->
+        <div class="modal" id="tasks-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Aufgaben-Manager</h3>
+                    <button class="btn-close" data-modal="tasks-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="task-input-section">
+                        <div class="input-group">
+                            <input type="text" id="new-task" placeholder="Neue Aufgabe hinzufügen..." class="task-input">
+                            <button class="btn-add" id="add-task">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="task-list" id="task-list">
+                        <!-- Tasks will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Modal -->
+        <div class="modal" id="notes-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Schnelle Notizen</h3>
+                    <button class="btn-close" data-modal="notes-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="notes-section">
+                        <div class="note-input-area">
+                            <input type="text" id="note-title" placeholder="Notiz-Titel..." class="note-title-input">
+                            <textarea id="note-content" placeholder="Deine Notiz hier..." class="note-textarea"></textarea>
+                            <button class="btn-primary" id="save-note">Notiz speichern</button>
+                        </div>
+                        <div class="notes-list" id="notes-list">
+                            <!-- Notes will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Modal -->
+        <div class="modal" id="projects-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Projekt-Manager</h3>
+                    <button class="btn-close" data-modal="projects-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-input-section">
+                        <div class="input-row">
+                            <input type="text" id="project-name" placeholder="Projektname..." class="project-input">
+                            <select id="project-status" class="project-select">
+                                <option value="planning">Planung</option>
+                                <option value="active">Aktiv</option>
+                                <option value="completed">Abgeschlossen</option>
+                                <option value="paused">Pausiert</option>
+                            </select>
+                            <button class="btn-add" id="add-project">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <textarea id="project-description" placeholder="Projektbeschreibung..." class="project-textarea"></textarea>
+                    </div>
+                    <div class="projects-grid" id="projects-list">
+                        <!-- Projects will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts Modal -->
+        <div class="modal" id="scripts-modal">
+            <div class="modal-content scripts-modal-large">
+                <div class="modal-header">
+                    <h3>Python Script Runner</h3>
+                    <button class="btn-close" data-modal="scripts-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="script-editor-section">
+                        <div class="editor-toolbar">
+                            <button class="btn-secondary" id="run-script">
+                                <i class="fas fa-play"></i> Ausführen
+                            </button>
+                            <button class="btn-secondary" id="clear-script">
+                                <i class="fas fa-trash"></i> Löschen
+                            </button>
+                            <button class="btn-secondary" id="save-script">
+                                <i class="fas fa-save"></i> Speichern
+                            </button>
+                        </div>
+                        <div class="editor-container">
+                            <textarea id="script-editor" placeholder="# Dein Python Code hier...\nprint('Hello World!')" class="script-textarea"></textarea>
+                        </div>
+                        <div class="output-section">
+                            <h4>Ausgabe:</h4>
+                            <div id="script-output" class="script-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div class="modal" id="settings-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Einstellungen</h3>
+                    <button class="btn-close" data-modal="settings-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="settings-section">
+                        <h4>Erscheinungsbild</h4>
+                        <div class="setting-item">
+                            <label for="theme-selector">Theme:</label>
+                            <select id="theme-selector">
+                                <option value="light">Hell</option>
+                                <option value="dark">Dunkel</option>
+                                <option value="auto">System</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="font-size">Schriftgröße:</label>
+                            <select id="font-size">
+                                <option value="small">Klein</option>
+                                <option value="medium">Mittel</option>
+                                <option value="large">Groß</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h4>Daten</h4>
+                        <button class="btn-secondary" id="export-data">Daten exportieren</button>
+                        <button class="btn-secondary" id="import-data">Daten importieren</button>
+                        <button class="btn-danger" id="clear-all-data">Alle Daten löschen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

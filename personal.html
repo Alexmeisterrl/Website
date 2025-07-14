@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persönliche Infos - Personal Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-nav">
+                    <a href="index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Zurück zum Hub
+                    </a>
+                </div>
+                <h1 class="app-title">Persönliche Infos</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="personal-info-container">
+                <!-- Profile Section -->
+                <section class="profile-section">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2 class="profile-name">[Dein Name]</h2>
+                            <p class="profile-title">[Deine Berufsbezeichnung/Rolle]</p>
+                            <p class="profile-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                [Dein Standort]
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section class="info-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-info-circle"></i>
+                        Über mich
+                    </h3>
+                    <div class="info-card">
+                        <p class="about-text">
+                            [Hier kannst du eine persönliche Beschreibung über dich einfügen. 
+                            Erzähle von deinen Interessen, deiner Motivation und was dich antreibt. 
+                            Dies ist dein Raum, um dich vorzustellen.]
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="info-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-code"></i>
+                        Fähigkeiten & Technologien
+                    </h3>
+                    <div class="info-card">
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4>Programmiersprachen</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">HTML/CSS</span>
+                                    <span class="skill-tag">[Weitere...]</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Frameworks & Tools</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">Git</span>
+                                    <span class="skill-tag">[Weitere...]</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Andere Fähigkeiten</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Projektmanagement</span>
+                                    <span class="skill-tag">UI/UX Design</span>
+                                    <span class="skill-tag">Problemlösung</span>
+                                    <span class="skill-tag">[Weitere...]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Current Projects Section -->
+                <section class="info-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-project-diagram"></i>
+                        Aktuelle Projekte
+                    </h3>
+                    <div class="projects-showcase">
+                        <div class="project-showcase-card">
+                            <div class="project-showcase-header">
+                                <h4>[Projektname 1]</h4>
+                                <span class="project-status-badge active">Aktiv</span>
+                            </div>
+                            <p class="project-showcase-description">
+                                [Kurze Beschreibung des Projekts und was es erreichen soll.]
+                            </p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">SQLite</span>
+                            </div>
+                        </div>
+
+                        <div class="project-showcase-card">
+                            <div class="project-showcase-header">
+                                <h4>[Projektname 2]</h4>
+                                <span class="project-status-badge planning">Planung</span>
+                            </div>
+                            <p class="project-showcase-description">
+                                [Kurze Beschreibung des geplanten Projekts.]
+                            </p>
+                            <div class="project-tech-stack">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">API</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Goals Section -->
+                <section class="info-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-target"></i>
+                        Ziele & Pläne
+                    </h3>
+                    <div class="info-card">
+                        <div class="goals-list">
+                            <div class="goal-item">
+                                <div class="goal-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="goal-content">
+                                    <h4>Kurzfristige Ziele (nächste 3 Monate)</h4>
+                                    <ul>
+                                        <li>[Ziel 1 - z.B. Neue Technologie lernen]</li>
+                                        <li>[Ziel 2 - z.B. Projekt abschließen]</li>
+                                        <li>[Ziel 3 - z.B. Skill verbessern]</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="goal-item">
+                                <div class="goal-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="goal-content">
+                                    <h4>Langfristige Ziele (nächstes Jahr)</h4>
+                                    <ul>
+                                        <li>[Langfristiges Ziel 1]</li>
+                                        <li>[Langfristiges Ziel 2]</li>
+                                        <li>[Langfristiges Ziel 3]</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact & Links Section -->
+                <section class="info-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-link"></i>
+                        Links & Kontakt
+                    </h3>
+                    <div class="info-card">
+                        <div class="contact-links">
+                            <a href="mailto:[deine-email]" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                E-Mail
+                            </a>
+                            <a href="https://github.com/[dein-username]" class="contact-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a href="https://linkedin.com/in/[dein-profil]" class="contact-link" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                            <a href="[deine-portfolio-url]" class="contact-link" target="_blank">
+                                <i class="fas fa-globe"></i>
+                                Portfolio
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Edit Mode Button -->
+                <div class="edit-section">
+                    <button class="btn-primary" id="edit-mode-btn">
+                        <i class="fas fa-edit"></i>
+                        Informationen bearbeiten
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Edit Modal -->
+        <div class="modal" id="edit-modal">
+            <div class="modal-content edit-modal-large">
+                <div class="modal-header">
+                    <h3>Persönliche Informationen bearbeiten</h3>
+                    <button class="btn-close" data-modal="edit-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="personal-info-form">
+                        <div class="form-section">
+                            <h4>Grundinformationen</h4>
+                            <div class="form-row">
+                                <input type="text" id="edit-name" placeholder="Dein Name" class="form-input">
+                                <input type="text" id="edit-title" placeholder="Berufsbezeichnung/Rolle" class="form-input">
+                            </div>
+                            <input type="text" id="edit-location" placeholder="Standort" class="form-input">
+                            <textarea id="edit-about" placeholder="Über mich..." class="form-textarea"></textarea>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Kontaktlinks</h4>
+                            <input type="email" id="edit-email" placeholder="E-Mail Adresse" class="form-input">
+                            <input type="url" id="edit-github" placeholder="GitHub URL" class="form-input">
+                            <input type="url" id="edit-linkedin" placeholder="LinkedIn URL" class="form-input">
+                            <input type="url" id="edit-portfolio" placeholder="Portfolio URL" class="form-input">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-primary" id="save-personal-info">
+                                <i class="fas fa-save"></i>
+                                Speichern
+                            </button>
+                            <button type="button" class="btn-secondary" id="cancel-edit">
+                                Abbrechen
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="personal.js"></script>
+</body>
+</html>

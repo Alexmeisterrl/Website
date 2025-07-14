@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt-Manager - Personal Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-nav">
+                    <a href="index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Zurück zum Hub
+                    </a>
+                </div>
+                <h1 class="app-title">Projekt-Manager</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" id="view-toggle" title="Ansicht wechseln">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="btn-icon" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="page-container">
+                <!-- Page Header -->
+                <section class="page-header">
+                    <div class="page-header-content">
+                        <div class="page-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="page-info">
+                            <h2 class="page-title">Projektübersicht</h2>
+                            <p class="page-description">Sieh alle deine Projekte auf einen Blick. Halte den Fortschritt klar und die nächsten Schritte einfach.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Add Section -->
+                <section class="quick-add-section">
+                    <div class="quick-add-card">
+                        <h3 class="section-title">
+                            <i class="fas fa-plus-circle"></i>
+                            Neues Projekt erstellen
+                        </h3>
+                        <div class="project-input-area">
+                            <div class="project-input-row">
+                                <input type="text" id="project-name" placeholder="Projektname..." class="project-input-large">
+                                <select id="project-status" class="project-status-select">
+                                    <option value="planning">Planung</option>
+                                    <option value="active" selected>Aktiv</option>
+                                    <option value="completed">Abgeschlossen</option>
+                                    <option value="paused">Pausiert</option>
+                                    <option value="cancelled">Abgebrochen</option>
+                                </select>
+                            </div>
+                            <textarea id="project-description" placeholder="Projektbeschreibung und Ziele..." class="project-textarea-large"></textarea>
+                            <div class="project-input-actions">
+                                <input type="date" id="project-deadline" class="project-date-input">
+                                <select id="project-priority" class="project-priority-select">
+                                    <option value="low">Niedrige Priorität</option>
+                                    <option value="medium" selected>Mittlere Priorität</option>
+                                    <option value="high">Hohe Priorität</option>
+                                </select>
+                                <button class="btn-add-large" id="add-project">
+                                    <i class="fas fa-plus"></i>
+                                    Projekt erstellen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Project Stats -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-projects">0</span>
+                                <span class="stat-label">Projekte</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon active">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="active-projects">0</span>
+                                <span class="stat-label">Aktiv</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon completed">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="completed-projects">0</span>
+                                <span class="stat-label">Abgeschlossen</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon overdue">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="overdue-projects">0</span>
+                                <span class="stat-label">Überfällig</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Project Filters -->
+                <section class="filter-section">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">
+                            <i class="fas fa-list"></i>
+                            Alle Projekte
+                        </button>
+                        <button class="filter-tab" data-filter="active">
+                            <i class="fas fa-play"></i>
+                            Aktiv
+                        </button>
+                        <button class="filter-tab" data-filter="planning">
+                            <i class="fas fa-clipboard-list"></i>
+                            Planung
+                        </button>
+                        <button class="filter-tab" data-filter="completed">
+                            <i class="fas fa-check"></i>
+                            Abgeschlossen
+                        </button>
+                        <button class="filter-tab" data-filter="overdue">
+                            <i class="fas fa-exclamation"></i>
+                            Überfällig
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Projects List -->
+                <section class="projects-section">
+                    <div class="projects-container">
+                        <div class="projects-header">
+                            <h3 class="section-title">
+                                <i class="fas fa-clipboard-list"></i>
+                                Deine Projekte
+                            </h3>
+                            <div class="projects-actions">
+                                <select id="sort-select" class="sort-select">
+                                    <option value="newest">Neueste zuerst</option>
+                                    <option value="oldest">Älteste zuerst</option>
+                                    <option value="name">Nach Name</option>
+                                    <option value="status">Nach Status</option>
+                                    <option value="priority">Nach Priorität</option>
+                                    <option value="deadline">Nach Deadline</option>
+                                </select>
+                                <button class="btn-secondary" id="export-projects">
+                                    <i class="fas fa-download"></i>
+                                    Exportieren
+                                </button>
+                            </div>
+                        </div>
+                        <div class="projects-grid" id="projects-list">
+                            <!-- Projects will be dynamically added here -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Edit Project Modal -->
+        <div class="modal" id="edit-project-modal">
+            <div class="modal-content edit-modal-large">
+                <div class="modal-header">
+                    <h3>Projekt bearbeiten</h3>
+                    <button class="btn-close" data-modal="edit-project-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-project-form">
+                        <div class="form-row">
+                            <input type="text" id="edit-project-name" placeholder="Projektname..." class="form-input">
+                            <select id="edit-project-status" class="form-input">
+                                <option value="planning">Planung</option>
+                                <option value="active">Aktiv</option>
+                                <option value="completed">Abgeschlossen</option>
+                                <option value="paused">Pausiert</option>
+                                <option value="cancelled">Abgebrochen</option>
+                            </select>
+                        </div>
+                        <textarea id="edit-project-description" placeholder="Projektbeschreibung..." class="form-textarea"></textarea>
+                        <div class="form-row">
+                            <input type="date" id="edit-project-deadline" class="form-input">
+                            <select id="edit-project-priority" class="form-input">
+                                <option value="low">Niedrige Priorität</option>
+                                <option value="medium">Mittlere Priorität</option>
+                                <option value="high">Hohe Priorität</option>
+                            </select>
+                        </div>
+                        <div class="form-section">
+                            <h4>Projekt-Notizen</h4>
+                            <textarea id="edit-project-notes" placeholder="Zusätzliche Notizen, Updates, Links..." class="form-textarea"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-primary" id="update-project">
+                                <i class="fas fa-save"></i>
+                                Speichern
+                            </button>
+                            <button type="button" class="btn-secondary" id="cancel-edit">
+                                Abbrechen
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Details Modal -->
+        <div class="modal" id="project-details-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="project-details-title">Projekt Details</h3>
+                    <button class="btn-close" data-modal="project-details-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="project-details-content">
+                        <!-- Project details will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="projects.js"></script>
+</body>
+</html>

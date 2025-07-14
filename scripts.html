@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script Runner - Personal Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-nav">
+                    <a href="index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Zurück zum Hub
+                    </a>
+                </div>
+                <h1 class="app-title">Script Runner</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" id="fullscreen-toggle" title="Vollbild">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="btn-icon" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="page-container">
+                <!-- Page Header -->
+                <section class="page-header">
+                    <div class="page-header-content">
+                        <div class="page-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="page-info">
+                            <h2 class="page-title">Python Scripts ausführen</h2>
+                            <p class="page-description">Teste und führe deinen Code direkt hier aus. Kein Setup nötig—einfach schreiben und loslegen.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Script Editor Section -->
+                <section class="editor-section">
+                    <div class="editor-container">
+                        <div class="editor-header">
+                            <div class="editor-tabs">
+                                <div class="editor-tab active" data-tab="editor">
+                                    <i class="fas fa-code"></i>
+                                    Script Editor
+                                </div>
+                                <div class="editor-tab" data-tab="saved">
+                                    <i class="fas fa-save"></i>
+                                    Gespeicherte Scripts
+                                    <span class="tab-count" id="saved-count">0</span>
+                                </div>
+                                <div class="editor-tab" data-tab="templates">
+                                    <i class="fas fa-file-code"></i>
+                                    Vorlagen
+                                </div>
+                            </div>
+                            <div class="editor-actions">
+                                <button class="btn-secondary" id="format-code">
+                                    <i class="fas fa-indent"></i>
+                                    Formatieren
+                                </button>
+                                <button class="btn-secondary" id="clear-editor">
+                                    <i class="fas fa-trash"></i>
+                                    Löschen
+                                </button>
+                                <button class="btn-secondary" id="save-script">
+                                    <i class="fas fa-save"></i>
+                                    Speichern
+                                </button>
+                                <button class="btn-primary" id="run-script">
+                                    <i class="fas fa-play"></i>
+                                    Ausführen
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Editor Tab Content -->
+                        <div class="tab-content active" id="editor-tab">
+                            <div class="code-editor-container">
+                                <div class="code-editor-header">
+                                    <input type="text" id="script-name" placeholder="Script Name (optional)" class="script-name-input">
+                                    <div class="editor-info">
+                                        <span id="cursor-position">Zeile 1, Spalte 1</span>
+                                        <span id="char-count">0 Zeichen</span>
+                                    </div>
+                                </div>
+                                <div class="code-editor-wrapper">
+                                    <div class="line-numbers" id="line-numbers">1</div>
+                                    <textarea id="script-editor" placeholder="# Dein Python Code hier...
+print('Hello World!')
+
+# Beispiele:
+# for i in range(5):
+#     print(f'Zahl: {i}')
+
+# name = input('Wie heißt du? ')
+# print(f'Hallo {name}!')
+" class="code-editor"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saved Scripts Tab Content -->
+                        <div class="tab-content" id="saved-tab">
+                            <div class="saved-scripts-container">
+                                <div class="saved-scripts-header">
+                                    <h3>Gespeicherte Scripts</h3>
+                                    <div class="saved-scripts-actions">
+                                        <button class="btn-secondary" id="import-script">
+                                            <i class="fas fa-upload"></i>
+                                            Importieren
+                                        </button>
+                                        <button class="btn-secondary" id="export-all-scripts">
+                                            <i class="fas fa-download"></i>
+                                            Alle exportieren
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="saved-scripts-list" id="saved-scripts-list">
+                                    <!-- Saved scripts will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Templates Tab Content -->
+                        <div class="tab-content" id="templates-tab">
+                            <div class="templates-container">
+                                <h3>Code-Vorlagen</h3>
+                                <div class="templates-grid" id="templates-grid">
+                                    <!-- Templates will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Output Section -->
+                <section class="output-section">
+                    <div class="output-container">
+                        <div class="output-header">
+                            <h3 class="section-title">
+                                <i class="fas fa-terminal"></i>
+                                Ausgabe
+                            </h3>
+                            <div class="output-actions">
+                                <button class="btn-secondary" id="clear-output">
+                                    <i class="fas fa-trash"></i>
+                                    Löschen
+                                </button>
+                                <button class="btn-secondary" id="copy-output">
+                                    <i class="fas fa-copy"></i>
+                                    Kopieren
+                                </button>
+                            </div>
+                        </div>
+                        <div class="output-display" id="script-output">
+                            <div class="output-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <p>Führe ein Script aus, um die Ausgabe hier zu sehen</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Script Stats -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-scripts">0</span>
+                                <span class="stat-label">Scripts</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon executed">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="executed-count">0</span>
+                                <span class="stat-label">Ausgeführt</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon lines">
+                                <i class="fas fa-list-ol"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-lines">0</span>
+                                <span class="stat-label">Zeilen Code</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon time">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="last-runtime">0ms</span>
+                                <span class="stat-label">Letzte Laufzeit</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Save Script Modal -->
+        <div class="modal" id="save-script-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Script speichern</h3>
+                    <button class="btn-close" data-modal="save-script-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="save-script-form">
+                        <input type="text" id="save-script-name" placeholder="Script Name..." class="form-input" required>
+                        <textarea id="save-script-description" placeholder="Beschreibung (optional)..." class="form-textarea"></textarea>
+                        <div class="form-actions">
+                            <button type="button" class="btn-primary" id="confirm-save-script">
+                                <i class="fas fa-save"></i>
+                                Speichern
+                            </button>
+                            <button type="button" class="btn-secondary" id="cancel-save-script">
+                                Abbrechen
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
